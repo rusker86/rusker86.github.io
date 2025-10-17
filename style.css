@@ -96,7 +96,8 @@ figure img {
 
 #presentacion p {
 	margin: var(--margin-left-article-presentacion);
-	padding: 0;
+	padding-left: 1rem;
+	padding-right: 1rem;
 	flex: 1;
 	max-width: 60ch;
 	font-size: 1.15rem;
