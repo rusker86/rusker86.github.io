@@ -1,9 +1,11 @@
 :root {
 	--transition-time: 0.5s ease;
 	--text-color: #222;
+	--margin-left-article-presentacion: 1rem;
 }
 
 body {
+	position: relative;
 	padding: 0;
 	margin: 0;
 }
@@ -21,6 +23,14 @@ h1 {
 	font-family: "roboto", sans-serif;
 	padding: 0.5rem;
 	margin-left: 1rem;
+}
+
+h2 {
+	font-family: "roboto", sans-serif;
+}
+
+h1, h2 {
+	cursor: default;
 }
 
 ul {
@@ -43,6 +53,8 @@ li a {
 	display: block;
 	padding: 1rem;
 	line-height: 3rem;
+	font-family: "roboto", sans-serif;
+	font-size: x-large;
 }
 
 li:hover {
@@ -53,13 +65,90 @@ li:hover {
 	transition: var(--transition-time);
 }
 
+main {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+main h2 {
+	margin-top: 1rem;
+	text-align: center;
+	font-size: xx-large;
+	animation: slideAbout 0.6s ease forwards;
+}
+
+figure img {
+	height: auto;
+	width: 20%;
+	height: auto;
+	border-radius: 10px;
+	animation: zoomIn 0.8s ease forwards;
+
+}
+
+#presentacion {
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+	align-items: center;
+	margin: 2rem auto;
+}
+
+#presentacion figure {
+	display: contents;
+	padding: 0;
+/*	border: 1px solid red */
+}
+
+#presentacion p {
+	margin: var(--margin-left-article-presentacion);
+	padding: 0;
+	flex: 1;
+	max-width: 60ch;
+	animation:slideText 1s ease forwards;
+	animation-delay: 0.3s;
+/*border: 1px solid blue; */
+}
+
+#btn-bajar {
+	width: 5%;
+	margin-top: 5rem;
+	cursor: pointer;
+}
+
+#btn-bajar:hover {
+	animation: arrowHover 2s ease;
+}
+
 @media screen and (max-width: 800px){
 	header {
 	display: block;
-	height: 6rem;
+	height: auto;
 	background-color: white;
 	color: var(--text-color);
 	padding: 0;
+	}
+
+	#presentacion {
+		flex-direction: column;
+		text-align: center;
+		margin-bottom: 0;
+	}
+
+	#presentacion figure img {
+		width: 60%;
+		max-width: 300px;
+	}
+
+	#presentacion p {
+		margin: 1rem auto;
+		max-width: 65ch;
+		text-align: justify;
+	}
+
+	main h2 {
+		display: block;
 	}
 
 	header h1 {
@@ -69,7 +158,8 @@ li:hover {
 	
 	header ul {
 		display: block;
-		margin: 0;
+		margin: 0 auto;
+		margin-right: 3rem;	/*mantener así para que esté centrado*/
 		padding: 0;
 	}
 
@@ -81,5 +171,58 @@ li:hover {
 	header ul li a {
 		display: block;
 		width: 100%;
+	}
+
+	#btn-bajar {
+		margin-bottom: 10rem;
+		width: 5rem;
+	}
+}
+
+@keyframes zoomIn {
+	from {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes slideText {
+	from {
+		opacity: 0;
+		transform: translateX(20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@keyframes slideAbout {
+		from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes arrowHover {
+	from {
+		opacity: 0;
+		transform: translateY(-20px);
+	}
+
+	to {
+		opacity: 1;
+		transform: translateY(0);
 	}
 }
