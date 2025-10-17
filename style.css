@@ -29,7 +29,7 @@ h1 {
 main h2 {
 	font-family: "roboto", sans-serif;
 	cursor: default;
-	margin-top: 1rem;
+	margin-top: 5rem;
 	text-align: center;
 	font-size: xx-large;
 	animation: slideAbout 0.6s ease forwards;
@@ -86,7 +86,8 @@ main {
 	gap: 1rem;
 	justify-content: center;
 	align-items: center;
-	margin: 2rem auto;
+	margin: 2rem auto -4rem auto;
+	padding: 0 2rem;
 	transition: all 0.4s ease;
 }
 
@@ -94,13 +95,20 @@ main {
 	display: block;
 	width: 100%;
 	max-width: 500px;
-	border-radius: 10px;
-	transition: transform 0.5s ease;
+	border-radius: 15px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+	transition: 0.5s ease;
 }
 
 .img-container :hover {
 	transform: scale(1.1);
 	transition: 1s ease;
+}
+
+.img-container:hover #img {
+	transform: scale(1.05);
+	box-shadow: 0 6px 18px rgba(0, 0, 0, 1);
+	transition: 0.5s ease;
 }
 
 #presentacion p {
@@ -113,6 +121,7 @@ main {
 	line-height: 1.7;
 	animation: slideText 1s ease forwards;
 	animation-delay: 0.3s;
+	margin-bottom: 1rem;
 }
 
 #btn-bajar {
@@ -120,6 +129,7 @@ main {
 	margin: 5rem auto 10rem auto;
 	cursor: pointer;
 	animation: arrowBounce 2s ease-in-out infinite;
+	animation: float 2s ease-in-out infinite;
 }
 
 #btn-menu {
@@ -155,9 +165,10 @@ main {
 		margin-bottom: 0;
 	}
 
-	.img-container img {
-		width: 20%;
-		max-width: 300px;
+	.img-container #img {
+		width: 60%;
+		margin: auto;
+		max-width: 500px;
 		margin-bottom: 1rem;
 	}
 
@@ -213,5 +224,11 @@ main {
 @keyframes arrowBounce {
 	0% { transform: translateY(0); }
 	50% { transform: translateY(10px); }
+	100% { transform: translateY(0); }
+}
+
+@keyframes float {
+	0% { transform: translateY(0); }
+	50% { transform: translateY(6px); }
 	100% { transform: translateY(0); }
 }
