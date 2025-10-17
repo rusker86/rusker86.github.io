@@ -74,11 +74,11 @@ main {
 	flex-direction: column;
 }
 
-figure img {
-	width: 20%;
-	height: auto;
+.img-container {
+	display: inline-block;
 	border-radius: 10px;
 	animation: zoomIn 0.8s ease forwards;
+	transition: transform 0.5s ease;
 }
 
 #presentacion {
@@ -90,8 +90,17 @@ figure img {
 	transition: all 0.4s ease;
 }
 
-#presentacion figure {
-	display: contents;
+.img-container #img {
+	display: block;
+	width: 100%;
+	max-width: 500px;
+	border-radius: 10px;
+	transition: transform 0.5s ease;
+}
+
+.img-container :hover {
+	transform: scale(1.1);
+	transition: 1s ease;
 }
 
 #presentacion p {
@@ -146,9 +155,10 @@ figure img {
 		margin-bottom: 0;
 	}
 
-	#presentacion figure img {
-		width: 60%;
+	.img-container img {
+		width: 20%;
 		max-width: 300px;
+		margin-bottom: 1rem;
 	}
 
 	#presentacion p {
