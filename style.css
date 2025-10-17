@@ -12,57 +12,60 @@ body {
 
 header {
 	display: flex;
-	height: 6rem;
-	align-items: stretch;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0.5rem 1rem;
 	background-color: #ccc;
 	color: var(--text-color);
-	padding: 0;
 }
 
 h1 {
 	font-family: "roboto", sans-serif;
-	padding: 0.5rem;
-	margin-left: 1rem;
-}
-
-h2 {
-	font-family: "roboto", sans-serif;
-}
-
-h1, h2 {
+	font-size: 3rem;
+	margin: 1rem 0 0 1rem;
 	cursor: default;
 }
 
-ul {
-	display: flex;
-	justify-content:end;
-	align-items: center;
-	margin-left: auto;
+main h2 {
+	font-family: "roboto", sans-serif;
+	cursor: default;
+	margin-top: 1rem;
+	text-align: center;
+	font-size: xx-large;
+	animation: slideAbout 0.6s ease forwards;
 }
 
-li {
+ul#menu {
+	display: flex;
+	gap: 1rem;
 	list-style: none;
-	padding: 0.5rem;
-	transition: var(--transition-time);
+	margin-left: auto;
 	align-items: center;
+	animation: slideAbout 1s ease;
 }
 
 li a {
 	text-decoration: none;
-	color:  var(--text-color);
-	display: block;
-	padding: 1rem;
+	color: var(--text-color);
+	
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+
+	padding: 1rem 1.5rem;
 	line-height: 3rem;
+	height: auto;
 	font-family: "roboto", sans-serif;
-	font-size: x-large;
+	font-size: xx-large;
+	transition: background-color var(--transition-time);
+
 }
 
-li:hover {
+li a:hover {
 	background-color: #222;
-	a {
-		color: whitesmoke;
-	}
-	transition: var(--transition-time);
+	color: whitesmoke;
+	border-radius: 5px;
 }
 
 main {
@@ -71,20 +74,11 @@ main {
 	flex-direction: column;
 }
 
-main h2 {
-	margin-top: 1rem;
-	text-align: center;
-	font-size: xx-large;
-	animation: slideAbout 0.6s ease forwards;
-}
-
 figure img {
-	height: auto;
 	width: 20%;
 	height: auto;
 	border-radius: 10px;
 	animation: zoomIn 0.8s ease forwards;
-
 }
 
 #presentacion {
@@ -93,12 +87,11 @@ figure img {
 	justify-content: center;
 	align-items: center;
 	margin: 2rem auto;
+	transition: all 0.4s ease;
 }
 
 #presentacion figure {
 	display: contents;
-	padding: 0;
-/*	border: 1px solid red */
 }
 
 #presentacion p {
@@ -106,28 +99,44 @@ figure img {
 	padding: 0;
 	flex: 1;
 	max-width: 60ch;
-	animation:slideText 1s ease forwards;
+	font-size: 1.15rem;
+	line-height: 1.7;
+	animation: slideText 1s ease forwards;
 	animation-delay: 0.3s;
-/*border: 1px solid blue; */
 }
 
 #btn-bajar {
 	width: 5%;
-	margin-top: 5rem;
+	margin: 5rem auto 10rem auto;
 	cursor: pointer;
+	animation: arrowBounce 2s ease-in-out infinite;
 }
 
-#btn-bajar:hover {
-	animation: arrowHover 2s ease;
+#btn-menu {
+	display: none;
+	width: 3rem;
+	cursor: pointer;
+	transition: transform 0.3s ease;
 }
 
-@media screen and (max-width: 800px){
-	header {
+/* Estado menú abierto */
+.menu-open ul#menu {
 	display: block;
-	height: auto;
-	background-color: white;
-	color: var(--text-color);
-	padding: 0;
+	max-height: 500px; /* ajusta según cantidad de items */
+	overflow: hidden;
+	transition: max-height 0.4s ease;
+}
+
+.menu-open #btn-menu {
+	transform: scaleY(-1);
+}
+
+/* Media query para móviles */
+@media screen and (max-width: 1250px) {
+	header {
+		display: block;
+		background-color: white;
+		padding: 0;
 	}
 
 	#presentacion {
@@ -147,82 +156,49 @@ figure img {
 		text-align: justify;
 	}
 
-	main h2 {
-		display: block;
+	.btn-container {
+		display: flex;
+		justify-content: end;
 	}
 
-	header h1 {
-		text-align: center;
-		margin: 0;
-	}
-	
-	header ul {
-		display: block;
-		margin: 0 auto;
-		margin-right: 3rem;	/*mantener así para que esté centrado*/
-		padding: 0;
+	#btn-menu {
+		display: flex;
+		margin: 0 1rem 0 0;
+		transform: scaleX(-1);
 	}
 
-	header ul li {
-		text-align: center;
-		width: 100%;
-	}
-
-	header ul li a {
-		display: block;
-		width: 100%;
+	ul#menu {
+		display: none;
+		flex-direction: column;
+		max-height: 0;
+		overflow: hidden;
+		margin-right: 2rem;
 	}
 
 	#btn-bajar {
-		margin-bottom: 10rem;
+		margin: 3rem auto 10rem auto;
 		width: 5rem;
 	}
 }
 
+/* Animaciones */
 @keyframes zoomIn {
-	from {
-		opacity: 0;
-		transform: scale(0.9);
-	}
-
-	to {
-		opacity: 1;
-		transform: scale(1);
-	}
+	from { opacity: 0; transform: scale(0.9); }
+	to { opacity: 1; transform: scale(1); }
 }
 
 @keyframes slideText {
-	from {
-		opacity: 0;
-		transform: translateX(20px);
-	}
-
-	to {
-		opacity: 1;
-		transform: translateX(0);
-	}
+	from { opacity: 0; transform: translateX(20px); }
+	to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideAbout {
-		from {
-		opacity: 0;
-		transform: translateY(-20px);
-	}
-
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+	from { opacity: 0; transform: translateY(-20px); }
+	to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes arrowHover {
-	from {
-		opacity: 0;
-		transform: translateY(-20px);
-	}
-
-	to {
-		opacity: 1;
-		transform: translateY(0);
-	}
+@keyframes arrowBounce {
+	0% { transform: translateY(0); }
+	50% { transform: translateY(10px); }
+	100% { transform: translateY(0); }
 }
