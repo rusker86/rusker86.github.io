@@ -155,6 +155,8 @@ figure img {
 		margin: 1rem auto;
 		max-width: 65ch;
 		text-align: justify;
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 
 	.btn-container {
