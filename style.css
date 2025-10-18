@@ -124,9 +124,10 @@ main {
 	max-width: 70ch;
 	font-size: 1.15rem;
 	line-height: 1.7;
-	animation: slideText 1s ease forwards;
-	animation-delay: 0.3s;
+	animation: slideText 1s ease-in forwards;
+	animation-delay: 0.2s;
 	margin-bottom: 1rem;
+	opacity: 0;
 }
 
 #btn-bajar {
@@ -154,6 +155,10 @@ main {
 
 .menu-open #btn-menu {
 	transform: scaleY(-1);
+}
+
+#proyectos {
+	margin-top: 2rem;
 }
 
 /* Media query para móviles */
@@ -216,16 +221,19 @@ main {
 	to { opacity: 1; transform: scale(1); }
 }
 
+/*Deslizamiento del texto*/
 @keyframes slideText {
 	from { opacity: 0; transform: translateX(20px); }
 	to { opacity: 1; transform: translateX(0); }
 }
 
+/*Deslizamiento del sogbre mi*/
 @keyframes slideAbout {
 	from { opacity: 0; transform: translateY(-20px); }
 	to { opacity: 1; transform: translateY(0); }
 }
 
+/*Rebote de la flecha*/
 @keyframes arrowBounce {
 	0% { transform: translateY(0); }
 	50% { transform: translateY(10px); }
