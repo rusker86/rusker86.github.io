@@ -37,7 +37,7 @@ main h2 {
 	margin-bottom: -2rem;
 	text-align: center;
 	font-size: xx-large;
-	animation: slideAbout 0.6s ease forwards;
+	animation: slide 0.6s ease forwards;
 }
 
 ul#menu {
@@ -46,7 +46,7 @@ ul#menu {
 	list-style: none;
 	margin-left: auto;
 	align-items: center;
-	animation: slideAbout 1s ease;
+	animation: slide 1s ease;
 }
 
 li a {
@@ -127,7 +127,7 @@ main {
 	animation: slideText 1s ease-in forwards;
 	animation-delay: 0.2s;
 	margin-bottom: 1rem;
-	opacity: 0;
+	opacity: 0;	/*Debe estár en 0 por defecto para evitar efectos extraños*/
 }
 
 #btn-bajar {
@@ -228,7 +228,7 @@ main {
 }
 
 /*Deslizamiento del sogbre mi*/
-@keyframes slideAbout {
+@keyframes slide {
 	from { opacity: 0; transform: translateY(-20px); }
 	to { opacity: 1; transform: translateY(0); }
 }
